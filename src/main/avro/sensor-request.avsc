@@ -1,0 +1,11 @@
+{
+  "namespace" : "org.vosiievska",
+  "type" : "record",
+  "name" : "AvroSensorRequest",
+  "fields" : [
+    {"name":"id","type":"string"},
+    {"name":"temperature", "type":"float"},
+    {"name":"acceleration", "type":"float"},
+    {"name":"velocity","type":"float"}
+  ]
+}
