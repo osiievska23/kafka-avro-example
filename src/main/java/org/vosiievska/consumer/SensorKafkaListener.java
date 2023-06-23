@@ -14,14 +14,14 @@ public class SensorKafkaListener implements KafkaConsumer<String, AvroSensorRequ
 
   @Override
   @KafkaListener(
-      id = "sensor-group-id",
-      topics = "sensor-topic")
+      id = "${app.kafka-consumer-config.group-id}",
+      topics = "${app.kafka-config.topic-name}")
   public void listen(@Payload List<AvroSensorRequest> messages,
                      @Header(KafkaHeaders.RECEIVED_KEY) List<String> keys,
                      @Header(KafkaHeaders.RECEIVED_PARTITION) List<Integer> partitions,
                      @Header(KafkaHeaders.OFFSET) List<Long> offsets) {
 
-    System.out.printf("Received %s messages with keys: %s, partitions: %s and offsets: %s",
+    System.out.printf("Received %s messages with keys: %s, partitions: %s and offsets: %s%n",
         messages.size(), keys.toString(), partitions.toString(), offsets.toString());
   }
 }

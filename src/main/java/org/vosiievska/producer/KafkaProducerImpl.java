@@ -3,6 +3,7 @@ package org.vosiievska.producer;
 import org.apache.avro.specific.SpecificRecordBase;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
+import org.vosiievska.exception.KafkaBrokerException;
 
 @Service
 public class KafkaProducerImpl implements KafkaProducer {
@@ -22,6 +23,8 @@ public class KafkaProducerImpl implements KafkaProducer {
         System.out.printf("Sent message=[%s] to the topic=[%s] with offset[%s]%n", message, topicName, offset);
       } else {
         System.out.printf("Unable to send message=[%s] with exception message=[%s]%n", message, ex.getMessage());
+        throw new KafkaBrokerException(
+                "Unable to send message=[{}] by key=[{}] with exception message=[{}]", message, key, ex.getMessage());
       }
     });
   }

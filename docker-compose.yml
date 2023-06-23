@@ -45,5 +45,5 @@ services:
       SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'broker:29092'
       SCHEMA_REGISTRY_LISTENERS: http://0.0.0.0:8081
 
-#  docker exec -it broker kafka-topics --bootstrap-server broker:9092 --create --topic orders-avro --partitions 3 --replication-factor 1
+#  docker exec -it broker kafka-topics --bootstrap-server broker:9092 --create --topic sensors-request-topic --partitions 3 --replication-factor 1
 #  docker exec -it broker kafka-topics --bootstrap-server broker:9092 --list
